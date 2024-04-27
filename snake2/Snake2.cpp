@@ -2,21 +2,11 @@
 #include <windows.h>
 #include <conio.h>
 #include <thread>
+
 using namespace std;
 
+
 int main() {
-
-	/*int x;
-	while (1) {
-		x = (int)_getch();
-		if (x == 13) {
-			break;
-		}
-		else
-			cout << endl << endl << x;
-	}
-	return _getch();*/
-
 
 	srand(time(0)); // запуск генератора случайных чисел
 	system("title Snake Game");
@@ -108,7 +98,6 @@ int main() {
 	SetConsoleCursorPosition(h2, c2); 
 	SetConsoleTextAttribute(h2, 11); 
 	cout << head2; 
-
 
 	bool flag = true; // переменна€ дл€ управлени€ ходом цикла
 	do //  цикл игры
@@ -215,7 +204,7 @@ int main() {
 				if (length == max_length) { cout << " Win Player 1 GREEN "; };
 				if (length2 == max_length2) { cout << " Win Player 2 BLUE "; };
 				this_thread::sleep_for(chrono::milliseconds(2000));
-				break; // пока что - просто прерываем цикл 
+				break; 
 			}
 			
 			
@@ -226,7 +215,7 @@ int main() {
 				i = 0; r = 0;// обнуление числа несовпадающих координат
 				for (; i < length; i++) // запуск цикла на сверку совпадений
 					if (X_apple == array_X[i] && Y_apple == array_Y[i] ) // если совпадение найдено
-						break; // то прерываем цикл for
+						break; 
 
 				for (; r < length2; r++) 
 					if ( X_apple == array_X2[r] && Y_apple == array_Y2[r]) 
@@ -241,7 +230,7 @@ int main() {
 			cout << apple; // отображение символа "€блока"
 
 			SetConsoleTextAttribute(h, 10); // обратна€ установка цвета в зеленый - дл€ дальнейшего отображени€ "змейки"
-			//SetConsoleTextAttribute(h2, 11);
+			
 		}
 	
 		else // случай, когда голова "змейки" оказалась на новой пустой позиции
@@ -355,37 +344,29 @@ int main() {
 					
 				}
 
-				//if (1) //x
-				//{
-				//	SetConsoleCursorPosition(h, c); // двигаем туда курсора
-				//	SetConsoleTextAttribute(h, 10);
-				//	cout << head;
-				//	SetConsoleCursorPosition(h2, c2);
-				//	SetConsoleTextAttribute(h2, 11);
-				//	cout << head2;
-				//}
-
-/*
-				for (size_t i = 1; i < 2; i++)
+				for (size_t i = 0; i < length2; i++) //отрисовка змейки после пересечени€
 				{
-					c.X	=X; // устанавливаем в объект координат предыдущую позицию головы "змейки"
-					c.Y = Y;
-					SetConsoleCursorPosition(h, c); // двигаем туда курсора
-					SetConsoleTextAttribute(h, 10);
-					cout << head;
-					//SetConsoleCursorPosition(h, c); // двигаем туда курсора
-						//SetConsoleTextAttribute(h, 10);
-						
-
-					c.X = array_X[i]; // устанавливаем в объект координат предыдущую позицию головы "змейки"
-					c.Y = array_Y[i];
-					SetConsoleCursorPosition(h, c);  // двигаем туда курсор
-					SetConsoleTextAttribute(h, 10);
+					c2.X = array_X2[i];
+					c2.Y = array_Y2[i];
+					SetConsoleCursorPosition(h2, c2);
+					SetConsoleTextAttribute(h2, 11);
+					if (i == length2 - 1) {
+						cout << head2; continue;
+					}
 					putchar(snake);
 				}
-				*/
 
-				
+				for (size_t i = 0; i < length; i++)
+				{
+					c.X = array_X[i];
+					c.Y = array_Y[i];
+						SetConsoleCursorPosition(h, c);
+						SetConsoleTextAttribute(h, 10);
+						if (i == length -1) {
+							cout << head; continue;
+						}
+						putchar(snake);
+				}
 
 			}
 					
