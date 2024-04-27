@@ -8,6 +8,8 @@ using namespace std;
 
 int main() {
 
+	new_game:
+
 	srand(time(0)); // запуск генератора случайных чисел
 	system("title Snake Game");
 	system("mode con cols=70 lines=31"); // установка размеров окна консоли
@@ -374,5 +376,12 @@ int main() {
 		
 	} while (flag); // выходим из цикла, если сброшена управляющая переменная
 	system("cls"); // очищаем экран
-	cout << "GAME OVER\n"; // выводим сообщение о конце игры
+	cout << " Enter Y - for New play, another symbol - Exit" << endl;
+	char change;
+	cin >> change;
+	if (change == 'Y')
+	{
+		goto new_game;
+	}
+	else cout << "GAME OVER\n"; // выводим сообщение о конце игры
 };
