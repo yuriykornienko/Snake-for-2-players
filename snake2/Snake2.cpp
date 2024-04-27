@@ -351,7 +351,7 @@ int main() {
 					SetConsoleCursorPosition(h2, c2);
 					SetConsoleTextAttribute(h2, 11);
 					if (i == length2 - 1) {
-						cout << head2; continue;
+						cout << head2; break;
 					}
 					putchar(snake);
 				}
@@ -363,7 +363,7 @@ int main() {
 						SetConsoleCursorPosition(h, c);
 						SetConsoleTextAttribute(h, 10);
 						if (i == length -1) {
-							cout << head; continue;
+							cout << head; break;
 						}
 						putchar(snake);
 				}
